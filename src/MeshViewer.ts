@@ -108,6 +108,10 @@ export class MeshViewer extends gfx.GfxApp
 
     update(deltaTime: number): void 
     {
+        const startPosition = new gfx.Vector3(0, 0, 0);
+        const endPosition = new gfx.Vector3(0, 0.5, 1);
+        this.character.position.lerp(startPosition, endPosition, this.morphAlpha);
+
         this.cameraControls.update(deltaTime);
     }
 
