@@ -5,11 +5,13 @@
  */ 
 
 import * as gfx from 'gophergfx'
+import { GUI } from 'dat.gui'
 
 export class MeshViewer extends gfx.GfxApp
 {
     private cameraControls: gfx.OrbitControls;
     private character: gfx.Transform3;
+    private morphAlpha: number;
 
     constructor()
     {
@@ -17,6 +19,7 @@ export class MeshViewer extends gfx.GfxApp
 
         this.cameraControls = new gfx.OrbitControls(this.camera);
         this.character = new gfx.Transform3();
+        this.morphAlpha = 0;
     }
 
     createScene(): void 
@@ -86,8 +89,21 @@ export class MeshViewer extends gfx.GfxApp
             './assets/LinkBody.png'
         ));
 
-
         this.scene.add(this.character);
+
+        // Create a simple GUI
+        const gui = new GUI();
+        gui.width = 200;
+
+        const morphController = gui.add(this, 'morphAlpha', 0, 1);
+        morphController.name('Alpha');
+        morphController.onChange(() => {
+            for(let i=0; i < this.character.children.length; i++)
+            {
+               const morphMesh = this.character.children[i] as gfx.MorphMesh; 
+               morphMesh.morphAlpha = this.morphAlpha;
+            }
+        });
     }
 
     update(deltaTime: number): void 
