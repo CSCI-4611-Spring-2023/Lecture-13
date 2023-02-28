@@ -44,7 +44,50 @@ export class MeshViewer extends gfx.GfxApp
         ground.position.y = -0.5;
         this.scene.add(ground);
 
-        
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkBody1.obj', 
+            './assets/LinkBody2.obj', 
+            './assets/LinkBody.png'
+        ));
+
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkEquipment1.obj', 
+            './assets/LinkEquipment2.obj', 
+            './assets/LinkEquipment.png'
+        ));
+
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkEyes1.obj', 
+            './assets/LinkEyes2.obj', 
+            './assets/LinkEyes.png'
+        ));
+
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkFace1.obj', 
+            './assets/LinkFace2.obj', 
+            './assets/LinkSkin.png'
+        ));
+
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkHair1.obj', 
+            './assets/LinkHair2.obj', 
+            './assets/LinkBody.png'
+        ));
+
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkHands1.obj', 
+            './assets/LinkHands2.obj', 
+            './assets/LinkSkin.png'
+        ));
+
+        this.character.add(this.loadMorphMesh(
+            './assets/LinkMouth1.obj', 
+            './assets/LinkMouth2.obj', 
+            './assets/LinkBody.png'
+        ));
+
+
+        this.scene.add(this.character);
     }
 
     update(deltaTime: number): void 
